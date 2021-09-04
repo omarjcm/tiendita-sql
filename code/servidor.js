@@ -5,6 +5,8 @@ const pool = require('./bd')
 const config = require('./configuracion')
 const rutas = require('./red/rutas')
 
+pool.conectar
+
 var app = express()
 
 app.use( bodyParser.json() )

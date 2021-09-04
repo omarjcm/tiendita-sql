@@ -19,7 +19,7 @@ CREATE TABLE Pais (
 CREATE TABLE Ciudad (
 	id_ciudad SERIAL NOT NULL,
 	nombre CHARACTER VARYING(20) NOT NULL,
-	ref_ciudad INTEGER NOT NULL
+	ref_pais INTEGER NOT NULL
 );
 
 CREATE TABLE Cliente (
@@ -62,6 +62,7 @@ ALTER TABLE Factura ADD CONSTRAINT PK_Factura PRIMARY KEY (codigo);
 ALTER TABLE Factura_Detalle ADD CONSTRAINT PK_Factura_Detalle PRIMARY KEY (id_factura_detalle);
 
 ALTER TABLE Producto ADD CONSTRAINT FK_Producto_Proveedor FOREIGN KEY (ref_proveedor) REFERENCES Proveedor(id_proveedor);
+ALTER TABLE Ciudad ADD CONSTRAINT FK_Ciudad_Pais FOREIGN KEY (ref_pais) REFERENCES Pais(id_pais);
 ALTER TABLE Cliente ADD CONSTRAINT FK_Cliente_Ciudad FOREIGN KEY (ref_ciudad) REFERENCES Ciudad(id_ciudad);
 ALTER TABLE Factura ADD CONSTRAINT FK_Factura_Cliente FOREIGN KEY (ref_cliente) REFERENCES Cliente(cedula);
 ALTER TABLE Factura ADD CONSTRAINT FK_Factura_Empleado FOREIGN KEY (ref_cliente) REFERENCES Empleado(cedula);
