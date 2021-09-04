@@ -12,15 +12,18 @@ async function obtenerCiudades( filtroCiudad ) {
 }
 
 async function agregarCiudad( ciudad ) {
-    return await pool.query('INSERT INTO ciudad(nombre, ref_pais) VALUES ($1, $2)', [ciudad.nombre, ciudad.pais])
+    let resultado = await pool.query('INSERT INTO ciudad(nombre, ref_pais) VALUES ($1, $2)', [ciudad.nombre, ciudad.pais])
+    return resultado
 }
 
 async function actualizarCiudad( ciudad ) {
-    return await pool.query('UPDATE ciudad SET nombre = $1, ref_pais = $2 WHERE id_ciudad = $3', [ciudad.nombre, ciudad.pais, ciudad.id_ciudad])
+    let resultado = await pool.query('UPDATE ciudad SET nombre = $1, ref_pais = $2 WHERE id_ciudad = $3', [ciudad.nombre, ciudad.pais, ciudad.id_ciudad])
+    return resultado
 }
 
 async function eliminarCiudad( ciudad ) {
-    return await pool.query('DELETE FROM ciudad WHERE id_ciudad = $1', [ciudad.id_ciudad])
+    let resultado = await pool.query('DELETE FROM ciudad WHERE id_ciudad = $1', [ciudad.id_ciudad])
+    return resultado
 }
 
 module.exports = {
